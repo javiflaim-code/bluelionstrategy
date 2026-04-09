@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-space-indigo: #101740;
+  --color-deep-space: #1d2d44;
+  --color-blue-slate: #3e5c76;
+  --color-dusty-denim: #748cab;
+  --color-eggshell: #f0ebd8;
+  --color-cream: #faf8f2;
+  --color-light-gray: #f2f3f6;
+  --color-brand-purple: #673de6;
+  --color-brand-purple-dark: #5a31d1;
+  --color-brand-purple-light: #7c55eb;
+  --color-accent-blue: #4A9FD9;
+  --color-accent-azure: #357df9;
+  --color-success: #00b090;
+  --color-danger: #fc5185;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: var(--color-space-indigo);
+  font-family: var(--font-sans);
+}
+
+/* Section backgrounds */
+.section-white {
+  background-color: #ffffff;
+  color: var(--color-space-indigo);
+}
+
+.section-cream {
+  background-color: var(--color-cream);
+  color: var(--color-space-indigo);
+}
+
+.section-light-gray {
+  background-color: var(--color-light-gray);
+  color: var(--color-space-indigo);
+}
+
+.section-dark {
+  background-color: var(--color-space-indigo);
+  color: var(--color-eggshell);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3 {
+  color: #ffffff;
+}
+
+/* CTA gradient button - dark navy style like current site */
+.btn-primary {
+  background-color: var(--color-space-indigo);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-deep-space);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(16, 23, 64, 0.3);
+}
+
+.btn-secondary {
+  border: 2px solid var(--color-space-indigo);
+  color: var(--color-space-indigo);
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--color-space-indigo);
+  color: #ffffff;
+}
+
+/* Light variants for dark sections */
+.section-dark .btn-primary {
+  background-color: #ffffff;
+  color: var(--color-space-indigo);
+}
+.section-dark .btn-primary:hover {
+  background-color: var(--color-eggshell);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+.section-dark .btn-secondary {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.section-dark .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Flip card animation */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Accordion animation */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-content.open {
+  max-height: 800px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f2f3f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #748cab;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e5c76;
 }
