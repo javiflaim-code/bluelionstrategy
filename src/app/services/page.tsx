@@ -58,10 +58,29 @@ export default function ServicesPage() {
             </div>
           </FadeIn>
 
-          {/* Flip card grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {agentDetails.map((agent, i) => (
+          {/* Flip card grid - top row: 3 cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {agentDetails.slice(0, 3).map((agent, i) => (
               <FadeIn key={agent.title + "-card"} delay={i * 80}>
+                <div className="flip-card h-[260px]">
+                  <div className="flip-card-inner relative w-full h-full">
+                    <div className="flip-card-front absolute inset-0 bg-space-indigo rounded-xl p-6 flex flex-col items-center justify-center text-center">
+                      <Image src={agent.icon} alt="" width={56} height={56} className="w-14 h-14 mb-4" />
+                      <h3 className="text-lg font-semibold text-white">{agent.title}</h3>
+                    </div>
+                    <div className="flip-card-back absolute inset-0 bg-eggshell border-2 border-space-indigo rounded-xl p-5 flex flex-col justify-center overflow-y-auto">
+                      <h3 className="text-base font-semibold text-space-indigo mb-2">{agent.title}</h3>
+                      <p className="text-sm text-deep-space leading-relaxed">{agent.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          {/* Bottom row: 2 cards centered */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 mb-16 max-w-[calc(66.666%+0.75rem)] mx-auto">
+            {agentDetails.slice(3).map((agent, i) => (
+              <FadeIn key={agent.title + "-card"} delay={(i + 3) * 80}>
                 <div className="flip-card h-[260px]">
                   <div className="flip-card-inner relative w-full h-full">
                     <div className="flip-card-front absolute inset-0 bg-space-indigo rounded-xl p-6 flex flex-col items-center justify-center text-center">
