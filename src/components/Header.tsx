@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -16,6 +17,10 @@ const navItems = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm">
@@ -39,7 +44,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 text-sm text-space-indigo/70 hover:text-space-indigo transition-colors font-medium"
+                className={`px-3 py-2 text-sm transition-colors font-medium border-b-2 ${
+                  isActive(item.href)
+                    ? "text-space-indigo border-space-indigo font-bold"
+                    : "text-space-indigo/70 border-transparent hover:text-space-indigo"
+                }`}
               >
                 {item.label}
               </Link>
@@ -83,7 +92,11 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block px-3 py-3 text-space-indigo/70 hover:text-space-indigo hover:bg-light-gray rounded-lg transition-colors"
+                className={`block px-3 py-3 rounded-lg transition-colors ${
+                  isActive(item.href)
+                    ? "text-space-indigo font-bold bg-light-gray"
+                    : "text-space-indigo/70 hover:text-space-indigo hover:bg-light-gray"
+                }`}
               >
                 {item.label}
               </Link>

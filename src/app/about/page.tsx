@@ -16,14 +16,14 @@ export default function AboutPage() {
       <section className="section-cream pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeIn>
-            <div className="space-y-4 text-lg md:text-xl text-blue-slate mb-10">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-space-indigo mb-10">
+              Strategy decks don&apos;t grow revenue. Deployed AI agents do.
+            </h1>
+            <div className="space-y-4 text-lg md:text-xl text-blue-slate">
               <p>We started Blue Lion to be the execution partner that deploys working systems.</p>
               <p>We&apos;re not exploring what AI could do for your business.</p>
               <p className="text-space-indigo font-semibold">We&apos;re deploying what works.</p>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-space-indigo">
-              Strategy decks don&apos;t grow revenue. Deployed AI agents do.
-            </h1>
           </FadeIn>
         </div>
       </section>
