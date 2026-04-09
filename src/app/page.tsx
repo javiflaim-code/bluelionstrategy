@@ -9,16 +9,18 @@ export default function HomePage() {
       <section className="section-cream pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeIn>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-space-indigo leading-tight">
-              Marketing Systems That Grow Your Business While You Run It.
+            <h1 className="text-3xl md:text-5xl lg:text-[3.4rem] font-bold text-space-indigo leading-tight">
+              Your Competitors Automated Growth Six Months Ago.
+              <br />
+              What&apos;s Your Plan?
             </h1>
           </FadeIn>
           <FadeIn delay={100}>
             <p className="mt-6 text-lg md:text-xl text-blue-slate max-w-3xl mx-auto leading-relaxed">
-              We deploy specialized AI agents that attract customers, create content, and
-              accelerate growth — without increasing headcount, without heavy infrastructure
-              spend, and without the overhead of a traditional marketing team. Just smarter
-              systems and measurable ROI.
+              We deploy specialized AI agents that attract customers and
+              accelerate growth — without increasing headcount.
+              <br />
+              <span className="font-semibold text-space-indigo">No Pilots. No Theory. Just Working Systems.</span>
             </p>
           </FadeIn>
           <FadeIn delay={200}>
@@ -36,11 +38,6 @@ export default function HomePage() {
                 Explore Agents
               </Link>
             </div>
-          </FadeIn>
-          <FadeIn delay={300}>
-            <p className="mt-10 text-lg text-space-indigo font-medium">
-              No pilots. No theory. Just working systems.
-            </p>
           </FadeIn>
         </div>
       </section>
@@ -88,17 +85,35 @@ export default function HomePage() {
             </div>
           </FadeIn>
 
+          {/* Top row: 3 cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {agentCategories.map((agent, i) => (
+            {agentCategories.slice(0, 3).map((agent, i) => (
               <FadeIn key={agent.title} delay={i * 80}>
                 <div className="flip-card h-[280px]">
                   <div className="flip-card-inner relative w-full h-full">
-                    {/* Front - Navy with icon */}
                     <div className="flip-card-front absolute inset-0 bg-space-indigo rounded-xl p-6 flex flex-col items-center justify-center text-center">
                       <Image src={agent.icon} alt="" width={64} height={64} className="w-16 h-16 mb-4" />
                       <h3 className="text-lg font-semibold text-white">{agent.title}</h3>
                     </div>
-                    {/* Back - Cream with description */}
+                    <div className="flip-card-back absolute inset-0 bg-eggshell border-2 border-space-indigo rounded-xl p-6 flex flex-col justify-center">
+                      <h3 className="text-lg font-semibold text-space-indigo mb-3">{agent.title}</h3>
+                      <p className="text-sm text-deep-space leading-relaxed">{agent.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          {/* Bottom row: 2 cards centered */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 max-w-[calc(66.666%+0.75rem)] mx-auto">
+            {agentCategories.slice(3).map((agent, i) => (
+              <FadeIn key={agent.title} delay={(i + 3) * 80}>
+                <div className="flip-card h-[280px]">
+                  <div className="flip-card-inner relative w-full h-full">
+                    <div className="flip-card-front absolute inset-0 bg-space-indigo rounded-xl p-6 flex flex-col items-center justify-center text-center">
+                      <Image src={agent.icon} alt="" width={64} height={64} className="w-16 h-16 mb-4" />
+                      <h3 className="text-lg font-semibold text-white">{agent.title}</h3>
+                    </div>
                     <div className="flip-card-back absolute inset-0 bg-eggshell border-2 border-space-indigo rounded-xl p-6 flex flex-col justify-center">
                       <h3 className="text-lg font-semibold text-space-indigo mb-3">{agent.title}</h3>
                       <p className="text-sm text-deep-space leading-relaxed">{agent.description}</p>
